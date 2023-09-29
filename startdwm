@@ -1,0 +1,65 @@
+#!/bin/bash
+function run {
+	if ! pgrep  $1 ;
+  then
+    $@&
+  fi
+}
+function runonly {
+  if ! $(ps aux | grep -e $1) ;
+  then
+    $@&
+  fi
+}
+# USE run function so repetition on restart is avoided 
+
+run xrdb -merge ~/.Xresources &
+run xset +fp /usr/share/fonts/local &
+run xset +fp ~/.fonts/misc &
+run xset +fp ~/.fonts *
+run xset +fp ~/.local/share/fonts &
+run xset fp rehash &
+killall pulseaudio &
+urxvtd &
+systemctl --user start pulseaudio &
+#exec /usr/local/bin/dwm-statusbar &
+run /usr/bin/dbus-daemon --session --address=unix:path=/tmp/dbus-session-socket &
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/tmp/dbus-session-socket &
+#tray_bl &
+
+#exec dlstatus &
+#sleep 10 && run trayer --edge top --align right --distancefrom right --distance 840 --widthtype request --width 4 --heighttype request --height 13 --iconspacing 6 --SetDockType true --SetPartialStrut false --transparent true --alpha 0 --tint 0x2e3440 --padding 1 --margin 2 --expand true &
+# power saving options
+xset s off &
+xset s noblank &
+xset s noexpose &
+xset c on &
+xset -dpms &
+light -S 33 &
+sleep 5 && picom -b -c &
+run feh --bg-scale ~/Pictures/Wallpapers/manjaro-dwm1a.jpg ## TheBlueNoise-2.jpg OR manjaro-dwm1a.jpg
+#sleep 5 && sh /home/rvc/scripts/wallchanger.sh & ## to cycle through the wallpapers
+###(exec conky -c ~/dwm-6.4/dwm-statusconky | while read LINE;do xsetroot -name "$LINE"; done) &
+xsetroot -name " " &
+killall dzen2 conky;sleep 10 && sh ~/dwm-6.4/dwm-dzenpanel &
+# date | awk '{print $1" '$2" "$3" "$4}'| while read LINE; do xsetroot -name "$LINE"; sleep 1; done &
+##sleep 10 && (while : ;do dwmbar;sleep1;done) & #~/dwm-6.4/dwm-bar/dwm_bar.sh &
+#sleep 15 && sh ~/bin/ConkyAwesomeWM & # alternative ConkyManjaroWM
+#sleep 10 && sh ~/bin/SimpleConky &
+runonly nm-applet &
+# start polkit for authentification 
+run '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)' &
+# MPD daemon start [if no other instance exist]
+[ ! -s ~/.config/mpd/pid ] && mpd &
+
+## initiate wttr script to display weather in statusconky / dwm-bar
+
+## check if internet is reachable and execute local-weather
+###echo "$(ping c1 8.8.8.8)" > /tmp/pingtest && sleep 5 && if [ $(cat /tmp/pingtest) != " " ]; then sh ~/.bin/local-weather; else sleep 5 && sh ~/.bin/inet-test && sh ~/.bin/local-weather && rm /tmp/pingtest;fi &
+sh ~/.bin/local-weather &
+runonly dunst &
+run update-checker 9000 &
+sleep 10 && run wttr_notify & # complete notifier
+sleep 10 && runonly $(openweather -i 1200 > /tmp/OpenWeather) & # for dwm-bar
+runonly udisksctl mount -b /dev/sda7 &
+exec /usr/local/bin/dwm

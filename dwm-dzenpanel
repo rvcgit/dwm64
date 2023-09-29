@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+X="$(xrandr | grep '*' | uniq | awk '{print$1}' | cut -d 'x' -f1)"  # your horizontal screen resolution
+Y="$(xrandr | grep '*' | uniq | awk '{print$1}' | cut -d 'x' -f2)"  # your vertical screen resolution
+XP="$(xdotool getmouselocation | awk '{print$1}' | sed 's/x://g')" #mouse coordinate X
+YP="$(xdotool getmouselocation | awk '{print$2}' | sed 's/y://g')" #mouse coordinate Y
+
+bar_length=33 # % length w.r.t X width; edit to suit your need
+wc=$(($X*$bar_length/100)) # bar length; % width as per panel_length
+xc=$(($X*1/3)) # 50% offset of X resolution
+
+xmpd=$(($X*2/3)) # mpd status info x-offset
+wmpd=$(($X*23/100)) # mpc icon / title
+
+x4=$(($X*900/1000)) # Exit button X position [ edit value to suit; current is 88.2% of x resolution ]
+we=$(($X*26/1000)) # -w value w.r.t  X resolution for Exit Menu [extreme right]
+
+# BOTTOM BAR
+# y=$(($Y*997/1000)) # y offset from y resolution; current is 99% of Y resolution
+
+# TOP BAR ; comment out above line and uncomment below line for TOP BAR
+ y=$(($Y-$Y))  # y offser from y resolution; current is 0.3% of Y resolution;
+
+## right for systray ; add your tray app [stalonetray OR trayer; below is trayer command]
+# alignment is always to right by default; change to left if you need
+
+
+conky -c ~/dwm-6.4/dwmpanelConky | dzen2 -p -e 'enterslave=grabkeys;leaveslave=ungrabkeys; button4=scrollup;button5=scrolldown; key_Left=scrollup;key_Right=scrolldown; button1=menuexec' -h '18' -w $wc -ta r -x $xc -y $y -fn 'Inconsolata Nerd Font:pixelsize=11:antialias=true' &
+
+conky -c ~/dwm-6.4/dwmmpdConky | dzen2 -p -e 'enterslave=grabkeys;leaveslave=ungrabkeys; button4=scrollup;button5=scrolldown; key_Left=scrollup;key_Right=scrolldown; button1=menuexec' -h '18' -w $wmpd -ta l -x $xmpd -y $y -fn 'Inconsolata Nerd Font:pixelsize=10:antialias=true' &
+
+conky -c ~/dwm-6.4/dwmExitConky | dzen2 -p -e 'enterslave=grabkeys;leaveslave=ungrabkeys; button4=scrollup;button5=scrolldown; key_Left=scrollup;key_Right=scrolldown; button1=menuexec' -h '18' -bg '#ff7043' -w $we -ta r -x $x4 -y $y -fn 'FuraCode Nerd Font:pixelsize=10:antialias=true' &
+
+## deps for workspace and forecast
+location="Vapi" ## TYPE YOUR CITY NAME WITHIN QUOTES
+sleep 5 && sh ~/.bin/dzenworkspaces.sh &
+sleep 15 && if [ "$(wmctrl -d | sed -n '/* /s///p' | awk '{print$NF}')" = " " ];then echo " " > /tmp/AWS;fi &
+while : ;do curl -s 'http://v1.wttr.in/$location\?MT' | tail -n33 | head -n30 > /tmp/asciiwttr;sleep 1801;done

@@ -1,0 +1,22 @@
+conky.config = {
+use_xft=true,
+out_to_console=true,
+out_to_x=false,
+background=false,
+double_buffer=true,
+no_buffers=true,
+update_interval=1,
+total_run_times=0,
+use_spacer='none',
+--below prevent conky to refresh over itself in tiling wm
+own_window_argb_visual=true,
+own_window_argb_value=0,
+default_color='3b6162',
+color0='cc3366',
+color1='3366cc',
+color2='66cc33',
+};
+
+
+conky.text = [[
+   ${downspeed wlp6s0}  ${upspeed wlp6s0}  |  ${cpu cpu1}% & ${cpu cpu2}%,  ${execpi 10 sensors | egrep CPU | awk '{print$2}'} |  ${execpi 10  ~/scripts/memory.sh} |   ${execpi 120 ~/scripts/battery} |   ${texeci 5 pactl list sinks | grep Volume | head -n1 | awk '{print $5}'} |   ${exec ~/scripts/mpd_status}... |  ${cat /tmp/WTTR}${font} |   ${time %a, %d %b, %H:%M  ]]

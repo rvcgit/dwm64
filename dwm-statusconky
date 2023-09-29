@@ -1,0 +1,23 @@
+conky.config = {
+use_xft=true,
+out_to_console=true,
+out_to_x=false,
+-- font='UbuntuMono Nerd Font:size=9'
+background=false,
+double_buffer=true,
+no_buffers=true,
+update_interval=1,
+total_run_times=0,
+use_spacer='none',
+--below prevent conky to refresh over itself in tiling wm
+own_window_argb_visual=true,
+own_window_argb_value=0,
+default_color='091020',
+color0='cc3366', --red
+color1='3366cc', --blue
+color2='66cc33', --green
+};
+
+
+conky.text = [[
+  ${color1}  ${exec mpdstat}   ${downspeed wlp6s0}  ${upspeed wlp6s0}     ${cpu cpu1}% & ${cpu cpu2}%,  ${execpi 10 sensors |grep -E CPU | awk '{print$2}'}   ${execpi 10 sh ~/scripts/memory.sh}    ${execpi 120 sh ~/scripts/battery}    ${texeci 5 pactl list sinks | grep Volume | head -n1 | awk '{print $5}'}  ${cat /tmp/i3wttr} ${cat /tmp/windspeed}    ${time %a, %d %b, %H:%M  ]]

@@ -7,7 +7,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappx     = 3;        /* gaps between windows */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 1;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -109,7 +109,7 @@ static const char col_gray2[]       = "#434c5e";
 static const char col_gray3[]       = "#a6aabd";
 static const char col_gray4[]       = "#d8dee9";
 static const char col_blue[]        = "#4682b4";
-static const char col_lblue[]       = "#6495ed";
+static const char col_lblue[]       = "#82afff";
 static const char col_black[]       = "#3D3C3A";
 static const char col_red[]         = "#ed2939";
 static const char col_yellow[]      = "#fafa37";
@@ -124,7 +124,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "i", " ii", " iii", " iv", " v" };
+static const char *tags[] = { "΁΁΁α", " β", " γ", " δ", " ϵ" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -132,9 +132,11 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	{ "Gimp-2.10",     NULL,       NULL,       1<<3,            1,           -1 },
 	{ "Navigator",  NULL,       NULL,       1 << 4,       0,           -1 },  /* for firefox, use Navigator OR firefox */
-	{ "Virt-manager",  NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "Virt-manager",  NULL,       NULL,       1 << 5,       0,           -1 },
+	{"Gcolor3",     NULL,   NULL,   0,      1,      -1},
+	{"ONLYOFFICE Desktop Editors",  NULL,   NULL, 1<<2,     1,      -1},
 };
 
 /* layout(s) */

@@ -11,8 +11,8 @@ conky.config = {
 -- using above mode helps in on-click action even in non ewmh wm like Xmonad
 
 conky.text = [[
-  ^bg(\#1a1e22)^fg(\#009688)^ca(1,~/.bin/dzenrofi.sh) ^fg(\#eceff4) AppMenu^ca()\
-  ^bg(\#1a1e22)^fg(\#F06292)^ca(1,~/.bin/dzen2rofifavmenu) ^fg(\#eceff4) Favs ^ca()\
-  ^ca(3,sh ~/.bin/dzentime.sh)^fg(\#FFCC80) ^ca()^bg(\#1a1e22) ^fg(\#C8E6C9)${time %d %b %Y}; ${time %r}^ca(3,sh ~/.bin/dzenweather.sh)  ^fg(\#FFCC80)${execpi 1818 ~/.bin/openweather -i | rev | awk '{print $1"  "$3}' | rev}^ca()\
-  ^ca(3,sh ~/.bin/dzensysinfo.sh)^fg(\#EC4899)  ^fg(\#7986CB) SysInfo ^ca()
+  ^bg(\#1a1e22)^fg(\#82afff)^ca(1,~/.bin/dzenrofi.sh) ^fg(\#eceff4) AppMenu^ca()\
+  ^bg(\#1a1e22)^fg(\#a0522d)^ca(1,~/.bin/dzen2rofifavmenu) ^fg(\#eceff4) Favs ^ca()\
+  ^ca(3,sh ~/.bin/dzentime.sh)^fg(\#a9aa5d) ^ca()^bg(\#1a1e22) ^fg(\#C8E6C9)${time %d %b %Y}; ${time %r}^ca(3,sh ~/.bin/dzenweather.sh)  ^fg(\#a9aa5d)${execpi 1818 ~/.bin/openweather -i | rev | awk '{print $1"  "$3}' | rev}^ca()\
+  ^ca(3,sh ~/.bin/dzensysinfo.sh)^fg(\#e97451)  ^fg(\#7986CB) SySInfo ^ca()
 ]]

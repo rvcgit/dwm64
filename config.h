@@ -132,11 +132,14 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp-2.10",     NULL,       NULL,       1<<3,            1,           -1 },
-	{ "Navigator",  NULL,       NULL,       1 << 4,       0,           -1 },  /* for firefox, use Navigator OR firefox */
-	{ "Virt-manager",  NULL,       NULL,       1 << 5,       0,           -1 },
+	{ "Gimp-2.10",     NULL,       NULL,       1<<2,            1,           -1 },
+	{ "Gedit",     NULL,       NULL,       1<<1,            1,           -1 },
+	{ "Pcmanfm",     NULL,       NULL,       1<<1,            1,           -1 },
+	{ "Terminator",     NULL,       NULL,       1<<1,            1,           -1 },			
+	{ "firefox",  NULL,       NULL,       1 ,       0,           -1 },  /* for firefox, use Navigator OR firefox */
+	{ "Virt-manager",  NULL,       NULL,       1 << 4,       0,           -1 },
 	{"Gcolor3",     NULL,   NULL,   0,      1,      -1},
-	{"ONLYOFFICE Desktop Editors",  NULL,   NULL, 1<<2,     1,      -1},
+	{"ONLYOFFICE Desktop Editors",  NULL,   NULL, 1<<3,     1,      -1},
 };
 
 /* layout(s) */

@@ -7,8 +7,6 @@ conky.config = {
     total_run_times = 0,
     use_spacer = none
 }
--- Here command "xdotool key Super+1 or 2 or 3 or 4 or 5" is used presuming "Super" key as your modifier; edit with your keybind
--- using above mode helps in on-click action even in non ewmh wm like Xmonad
 
 conky.text = [[
   ^bg(\#1a1e22)^fg(\#82afff)^ca(1,~/.bin/dzenrofi.sh) ^fg(\#eceff4) AppMenu^ca()\

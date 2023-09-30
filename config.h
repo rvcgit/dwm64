@@ -104,21 +104,22 @@ static const char *fonts[] = {
 	"rissole:size=10:antialias=true",
 };
 static const char dmenufont[]       = "Hack Nerd Font:size=8";
-static const char col_gray1[]       = "#1a1e22";
+static const char col_gray1[]       = "#111827";
 static const char col_gray2[]       = "#434c5e";
-static const char col_gray3[]       = "#a6aabd";
+static const char col_gray3[]       = "#525e54";
 static const char col_gray4[]       = "#d8dee9";
 static const char col_blue[]        = "#4682b4";
 static const char col_lblue[]       = "#82afff";
-static const char col_black[]       = "#3D3C3A";
+static const char col_black[]       = "#181818";
 static const char col_red[]         = "#ed2939";
 static const char col_yellow[]      = "#fafa37";
 static const char col_lgreen[]      = "#00fa9a";
-static const char col_white[]       = "#eceff4";
+static const char col_white[]       = "#b2beb5";
+static const char col_limegreen[] = "#93c572";
 static const char *colors[][3]      = {
 	/*			fg         bg          border   */
 	[SchemeNorm] =	 { col_gray3, col_gray1,  col_black },
-	[SchemeSel]  =	 { col_lgreen, col_gray1, col_blue },
+	[SchemeSel]  =	 { col_lgreen, col_gray1, col_lgreen },
 /*	[SchemeWarn] =	 { col_yellow, col_gray1, col_red }, */
 /*	[SchemeUrgent] = { col_white, col_red,    col_red }, */
 };

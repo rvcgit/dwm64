@@ -32,5 +32,5 @@ sleep 5 && conky -c ~/dwm-6.4/dwmmpdConky | dzen2 -p -e 'enterslave=grabkeys;lea
 sleep 5 && conky -c ~/dwm-6.4/dwmExitConky | dzen2 -p -e 'enterslave=grabkeys;leaveslave=ungrabkeys; button4=scrollup;button5=scrolldown; key_Left=scrollup;key_Right=scrolldown; button1=menuexec' -h '18' -bg '#ff7043' -w $we -ta r -x $x4 -y $y -fn 'FuraCode Nerd Font:pixelsize=10:antialias=true' &
 
 ## deps for  forecast
-location="Vapi" ## TYPE YOUR CITY NAME WITHIN QUOTES
+location="MY_CITY" ## TYPE YOUR CITY NAME WITHIN QUOTES
 while : ;do curl -s 'http://v1.wttr.in/$location\?MT' | tail -n33 | head -n30 > /tmp/asciiwttr;sleep 1801;done

@@ -11,7 +11,6 @@ conky.config = {
 conky.text = [[
  ^bg(\#1a1e22)^fg(\#c2b280)^ca(1,~/.bin/mpc-playlist-show) ^fg()^ca()^bg()\
   ^bg(\#1a1e22)^fg(\#b76e79)^ca(1,mpc prev)  ^fg()^ca()^bg()\
-  ^bg(\#1a1e22)^fg(\#a4803f)^ca(1,mpc toggle)${exec ~/dwm-6.4/mpdstat}^fg()^ca()^bg()\
+  ^bg(\#1a1e22)^fg(\#8db600)^ca(1,mpc toggle)${exec ~/dwm-6.4/mpdstat}^fg()^ca()^bg()\
   ^bg(\#1a1e22)^fg(\#b76e79)^ca(1,mpc next)   ^fg()^ca()^bg()\
-  ^bg(\#1a1e22)^fg(\#c2b280)^ca(1,mpc stop)  ^fg()^ca()^bg()
 ]]

@@ -66,10 +66,12 @@ dwm_mpc () {
 		#	echo "$TRACK $POSITION/$DURATION"
 			fi 
 	if [ "$state" = "[paused]" ] ; then
-           	echo "paused"
+           	echo " "
+#           	echo "paused"
 			fi
 	if [ -z "$state" ] ; then
-           echo "stopped"
+                echo " "
+#           echo "stopped"
 			fi
 
     fi

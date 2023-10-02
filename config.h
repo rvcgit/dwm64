@@ -192,7 +192,7 @@ static const char *terminal[] = { "urxvtc", NULL };
 static const char *files[] = { "pcmanfm", NULL };
 static const char *web[] = { "firefox", NULL };
 static const char *virtmanager[] = { "virt-manager", NULL };
-static const char *rofi[] = { "rofi","-show","drun", NULL };
+static const char *rofi[] = { "rofi","-show","drun", "-modi", "drun", "-location", "8", "-anchor", "8", "-theme-str", "#window { width: 45ch;}", "-theme-str", "#list-view { lines: 15; xoffset: 20; yoffset: 20;dynamic: true; fixed-width:false; }", NULL  };  /* anchor/location numbers top left clockwise: 1-2-3-4-5-6-7-8,center 0 */
 static const char *rofimenu[] = { "rofimenu", NULL };
 static const char *jgmenu[] = { "jgmenu_run", NULL };
 

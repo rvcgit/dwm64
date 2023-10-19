@@ -5,14 +5,9 @@ XP="$(xdotool getmouselocation | awk '{print$1}' | sed 's/x://g')" #mouse coordi
 YP="$(xdotool getmouselocation | awk '{print$2}' | sed 's/y://g')" #mouse coordinate Y
 
 bar_length=62 # % length w.r.t X width; edit to suit your need
-wc=$(($X*$bar_length/100)) # bar length; % width as per panel_length
-xc=$(($X*327/1000)) # 27% offset of X resolution
+w=$(($X*$bar_length/100)) # bar length; % width as per panel_length
+x=$(($X*327/1000)) # 27% offset of X resolution
 
-xmpd=$(($X*66/100)) # mpd status info x-offset
-wmpd=$(($X*27/100)) # mpc icon / title
-
-x4=$(($X*888/1000)) # Exit button X position [ edit value to suit; current is 88.8% of x resolution ]
-we=$(($X*25/1000)) # -w value w.r.t  X resolution for Exit Menu [extreme right]
 
 # BOTTOM BAR
  y=$(($Y*997/1000)) # y offset from y resolution; current is 99.7% of Y resolution
@@ -21,14 +16,14 @@ we=$(($X*25/1000)) # -w value w.r.t  X resolution for Exit Menu [extreme right]
 # y=$(($Y-$Y))  # y offser from y resolution; current is 0.3% of Y resolution;
 
 ## right for systray ; add your tray app [stalonetray OR trayer; below is trayer command]
-# alignment is always to right by default; change to left if you need
+# dwm is patched to show systray so no need of trayer
 
 ## pkill dzen2 and conky instances first
 killall dzen2 conky &
-sleep 5 && conky -c ~/dwm-6.4/dzonky-barConky | dzen2 -p -e 'enterslave=grabkeys;leaveslave=ungrabkeys; button4=scrollup;button5=scrolldown; key_Left=scrollup;key_Right=scrolldown; button1=menuexec' -h '18' -w $wc -ta l -x $xc -y $y -fn 'FiraCode Nerd Font:pixelsize=10:antialias=true' &
+sleep 5 && conky -c ~/dwm-6.4/dwm-dzen-unifiedConky | dzen2 -p -e 'enterslave=grabkeys;leaveslave=ungrabkeys; button4=scrollup;button5=scrolldown; key_Left=scrollup;key_Right=scrolldown; button1=menuexec' -h '18' -w $w -ta l -x $x -y $y -fn 'FiraCode Nerd Font:pixelsize=10:antialias=true' &
 
 # optional transparency
-sleep 10 && exec `(transset .85 -n "dzen title" >/dev/null 2>&1 &)` &
+sleep 10 && exec `(transset .9 -n "dzen title" >/dev/null 2>&1 &)` &
 
 ## deps for  forecast
 location="MY_CITY" ## TYPE YOUR CITY NAME WITHIN QUOTES

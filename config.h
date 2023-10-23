@@ -2,16 +2,16 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const Gap default_gap        = {.isgap = 1, .realgap = 6, .gappx = 6};
+static const Gap default_gap        = {.isgap = 1, .realgap = 4, .gappx = 4};
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappx     = 3;        /* gaps between windows */
+static const unsigned int gappx     = 2;        /* gaps between windows */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 1;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const int topbar             = 0;        /* 0 means bottom bar */
 /* Added this from arch wiki for st config  */
 /*
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
@@ -37,7 +37,7 @@ const char *colorname[] = {
 	"#ffbf00", /* "yellow3" */
 	"#4682b4", /* "blue2" */
 	"#cc00ff", /* "magenta3" */
-	"#00ffff", /* "cyan3" */
+	"#5EEAD4", /* "cyan3" */
 	"#b2beb5", /* "gray90" */
 
 	/* 8 bright colors */
@@ -45,9 +45,9 @@ const char *colorname[] = {
 	"#ed2939", /* "red" */
 	"#00fa9a", /* "green" */
 	"#fafa37", /* "yellow" */
-	"#6495ed", /* "blue" */
+	"#82afff", /* "blue" */
 	"#ba55d3", /* "magenta" */
-	"#40e0d0", /* "cyan" */
+	"#99F6E4", /* "cyan" */
 	"#e5e4e2", /* "white" */
 
 	[255] = 0,
@@ -70,11 +70,12 @@ unsigned int defaultrcs = 258; /*removed static at begining */
 
 /*
  * Default shape of cursor
+
  * 2: Block ("█")
  * 4: Underline ("_")
  * 6: Bar ("|")
  * 7: Snowman ("☃")
- static unsigned int cursorshape = 2;
+static unsigned int cursorshape = 2; 
 */
 
 /*
@@ -107,21 +108,21 @@ static const char dmenufont[]       = "Hack Nerd Font:size=8";
 static const char col_gray1[]       = "#111827";
 static const char col_gray2[]       = "#434c5e";
 static const char col_gray3[]       = "#525e54";
-static const char col_gray4[]       = "#d8dee9";
+static const char col_urgeent[]     = "indianred";
 static const char col_blue[]        = "#4682b4";
 static const char col_lblue[]       = "#82afff";
-static const char col_black[]       = "#181818";
+static const char col_black[]       = "#030501";
 static const char col_red[]         = "#ed2939";
 static const char col_yellow[]      = "#fafa37";
 static const char col_lgreen[]      = "#00fa9a";
 static const char col_white[]       = "#b2beb5";
-static const char col_limegreen[] = "#93c572";
+static const char col_limegreen[]   = "#93c572";
 static const char *colors[][3]      = {
 	/*			fg         bg          border   */
 	[SchemeNorm] =	 { col_gray3, col_gray1,  col_black },
 	[SchemeSel]  =	 { col_lgreen, col_gray1, col_lgreen },
 /*	[SchemeWarn] =	 { col_yellow, col_gray1, col_red }, */
-/*	[SchemeUrgent] = { col_white, col_red,    col_red }, */
+/*	[SchemeUrgent] = { col_red, col_gray1,    col_red } */
 };
 
 /* tagging */
@@ -133,9 +134,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp-2.10",     NULL,       NULL,       1<<2,            1,           -1 },
+	{ "Gimp-2.10",     NULL,       NULL,       1<<3,            1,           -1 },
 	{ "Gedit",     NULL,       NULL,       1<<1,            1,           -1 },
-	{ "Pcmanfm",     NULL,       NULL,       1<<1,            1,           -1 },
+	{ "Pcmanfm",     NULL,       NULL,       1<<2,            1,           -1 },
 	{ "Terminator",     NULL,       NULL,       1<<1,            1,           -1 },			
 	{ "firefox",  NULL,       NULL,       1 ,       0,           -1 },  /* for firefox, use Navigator OR firefox */
 	{ "Virt-manager",  NULL,       NULL,       1 << 4,       0,           -1 },
@@ -192,7 +193,7 @@ static const char *terminal[] = { "urxvtc", NULL };
 static const char *files[] = { "pcmanfm", NULL };
 static const char *web[] = { "firefox", NULL };
 static const char *virtmanager[] = { "virt-manager", NULL };
-static const char *rofi[] = { "rofi","-show","drun", "-modi", "drun", "-location", "8", "-anchor", "8", "-theme-str", "#window { width: 45ch;}", "-theme-str", "#list-view { lines: 15; xoffset: 20; yoffset: 20;dynamic: true; fixed-width:false; }", NULL  }; 
+static const char *rofi[] = { "rofi","-show","drun", "-modi", "drun", "-location", "7", "-anchor", "7", "-xoffset", "20" , "-yoffset", "-20", "-theme-str", "#window { width: 45ch;}", "-theme-str", "#list-view { lines: 15; dynamic: true; fixed-width:false; }", NULL  };  /* anchor/location numbers top left clockwise: 1-2-3-4-5-6-7-8,center 0 */
 static const char *rofimenu[] = { "rofimenu", NULL };
 static const char *jgmenu[] = { "jgmenu_run", NULL };
 
